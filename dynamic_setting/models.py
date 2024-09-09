@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 
-class DynamicSetting(TimeStampedModel):
+class DynamicSetting(models.Model):
 
     category = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
