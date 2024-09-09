@@ -53,6 +53,30 @@ class IntegerSettingField(SettingField):
         return validated_value
 
 
+class IntegerRangeSettingField(SettingField):
+    def __init__(self, min_value=None, max_value=None, **kwargs):
+        self.min_value = min_value
+        self.max_value = max_value
+        super().__init__(**kwargs)
+
+    def validate(self, value):
+        try:
+            parts = value.split(",")
+            minv = int(parts[0])
+            maxv = int(parts[1])
+        except ValueError:
+            raise SettingValueInvalid(f'This setting must be a integer')
+        
+        if minv > maxv:
+            raise SettingValueInvalid(f'This setting must have min value <= max value')
+        
+        if self.min_value and minv < self.min_value:
+            raise SettingValueInvalid(f'This setting must have minimum value is {self.min_value}')
+        if self.max_value and maxv > self.max_value:
+            raise SettingValueInvalid(f'This setting must have maximum value is {self.max_value}')
+        return minv, maxv
+
+
 class BooleanSettingField(SettingField):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
