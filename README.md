@@ -32,6 +32,7 @@ class BotSettings(Settings):
 
     sell_enable = BooleanSettingField(default=1, description='enable sell action')
     title = CharSettingField(default="hello", is_public=True)
+    version = CharSettingField(default=1, min_value=0, max_value=10, is_public=True)
 
     class Meta:
         name = 'bot'
