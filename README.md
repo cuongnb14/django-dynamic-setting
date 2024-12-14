@@ -16,13 +16,13 @@ INSTALLED_APPS = [
 ```
 
 Run migrate
-```python
+```sh
 python3 manage.py migrate
 ```
 
 
 Define setting in your code
-```
+```python
 # your_app/setting.py
 from dynamic_setting.base.fields import IntegerSettingField, BooleanSettingField, CharSettingField
 from dynamic_setting.base.settings import Settings
@@ -58,8 +58,8 @@ python3 manage.py init_dynamic_setting
 ```
 
 
-Use setting
-```
+Usage
+```python
 setting = BotSettings()
 print(setting.title)
 ```
