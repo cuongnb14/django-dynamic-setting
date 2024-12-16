@@ -6,7 +6,7 @@ Django Dynamic Setting is a Django app, designed to help you manage your project
 pip install git+https://github.com/cuongnb14/django-dynamic-setting@master#egg=django-dynamic-setting
 ```
 
-Add to install app
+**Add to install app**
 ```python
 INSTALLED_APPS = [
     ...
@@ -15,13 +15,13 @@ INSTALLED_APPS = [
 ]
 ```
 
-Run migrate
+**Run migrate**
 ```sh
 python3 manage.py migrate
 ```
 
 
-Define setting in your code
+**Define setting in your code**
 ```python
 # your_app/setting.py
 from dynamic_setting.base.fields import IntegerSettingField, BooleanSettingField, CharSettingField
@@ -52,14 +52,18 @@ class BotConfig(AppConfig):
         settings_registry.register(BotSettings)
 ```
 
-Init setting
+**Init setting**
 ```sh
 python3 manage.py init_dynamic_setting
 ```
 
-
-Usage
+**Usage**
 ```python
 setting = BotSettings()
 print(setting.title)
+```
+
+**Add API get list public setting **
+```python
+path("settings", DynamicSettingListAPIView.as_view(), name="setting_list"),
 ```
