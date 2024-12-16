@@ -63,7 +63,7 @@ setting = BotSettings()
 print(setting.title)
 ```
 
-**Add API get list public setting **
+**Add API get list public setting**
 ```python
 path("settings", DynamicSettingListAPIView.as_view(), name="setting_list"),
 ```
